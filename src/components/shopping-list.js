@@ -5,7 +5,7 @@ const ShoppingList = ( {data} ) => {
 
     const elements = data.map((item) => {
         return (
-            <li>
+            <li key = {item.id}>
                 <ShoppingListItem
                     label={item.label}
                     important={item.important}

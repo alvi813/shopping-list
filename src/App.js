@@ -9,9 +9,9 @@ import ShoppingList from "./components/shopping-list";
 const App = () => {
 
     const shoppingListData = [
-        {label: 'Pen'},
-        {label: 'Notebook', important: true},
-        {label: 'Pencil'}
+        {label: 'Pen', id: 1},
+        {label: 'Notebook', important: true, id: 2},
+        {label: 'Pencil', id: 3}
     ];
 
     return (
