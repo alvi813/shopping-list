@@ -1,4 +1,5 @@
 import React from "react";
+import "./shopping-list-item.css"
 
 const ShoppingListItem = ( { label, important = false } ) => {
 
