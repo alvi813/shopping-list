@@ -7,7 +7,9 @@ const ShoppingListItem = ( { label, important = false } ) => {
     };
 
     return (
-        <span style={shoppingListItemStyle}> { label } </span>
+        <span style={shoppingListItemStyle}>
+            { label }
+        </span>
     );
 };
 
