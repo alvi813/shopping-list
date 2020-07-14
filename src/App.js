@@ -7,11 +7,18 @@ import ShoppingList from "./components/shopping-list";
 
 
 const App = () => {
+
+    const shoppingListData = [
+        {label: 'Pen'},
+        {label: 'Notebook', important: true},
+        {label: 'Pencil'}
+    ];
+
     return (
         <div>
             <AppHeader />
             <SearchPanel />
-            <ShoppingList />
+            <ShoppingList data = {shoppingListData} />
         </div>
     );
 }
