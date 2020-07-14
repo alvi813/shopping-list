@@ -1,15 +1,22 @@
 import React from "react";
 import ShoppingListItem from "./shopping-list-item";
 
-const ShoppingList = () => {
+const ShoppingList = ( {data} ) => {
+
+    const elements = data.map((item) => {
+        return (
+            <li>
+                <ShoppingListItem
+                    label={item.label}
+                    important={item.important}
+                />
+            </li>
+        );
+    });
+
     return (
         <ul>
-            <li> <ShoppingListItem label = 'Pen' /> </li>
-            <li> <ShoppingListItem
-                label = 'Notebook'
-                important
-                 />
-            </li>
+            {elements}
         </ul>
     );
 };
