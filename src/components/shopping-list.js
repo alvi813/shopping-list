@@ -5,7 +5,11 @@ const ShoppingList = () => {
     return (
         <ul>
             <li> <ShoppingListItem label = 'Pen' /> </li>
-            <li> <ShoppingListItem label = 'Notebook'/> </li>
+            <li> <ShoppingListItem
+                label = 'Notebook'
+                important
+                 />
+            </li>
         </ul>
     );
 };

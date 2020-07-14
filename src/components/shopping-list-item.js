@@ -1,9 +1,13 @@
 import React from "react";
 
-const ShoppingListItem = ( { label } ) => {
+const ShoppingListItem = ( { label, important = false } ) => {
+
+    const shoppingListItemStyle = {
+        color: important ? "red" : "black"
+    };
 
     return (
-        <span> { label } </span>
+        <span style={shoppingListItemStyle}> { label } </span>
     );
 };
 
