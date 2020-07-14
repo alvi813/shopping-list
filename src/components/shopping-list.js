@@ -5,7 +5,7 @@ const ShoppingList = ( {data} ) => {
 
     const elements = data.map((item) => {
         return (
-            <li key = {item.id}>
+            <li key = {item.id} className="list-group-item">
                 <ShoppingListItem
                     label={item.label}
                     important={item.important}
@@ -15,7 +15,7 @@ const ShoppingList = ( {data} ) => {
     });
 
     return (
-        <ul>
+        <ul className="list-group shopping-list">
             {elements}
         </ul>
     );
