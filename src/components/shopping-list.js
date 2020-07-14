@@ -1,10 +1,11 @@
 import React from "react";
+import ShoppingListItem from "./shopping-list-item";
 
 const ShoppingList = () => {
     return (
         <ul>
-            <li>Pen</li>
-            <li>Potato</li>
+            <li> <ShoppingListItem label = 'Pen' /> </li>
+            <li> <ShoppingListItem label = 'Notebook'/> </li>
         </ul>
     );
 };
