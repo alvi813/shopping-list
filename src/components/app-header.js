@@ -1,8 +1,15 @@
 import React from "react";
 
-const AppHeader = () => {
+import './app-header.css';
+
+
+
+const AppHeader = ({toBuy, done}) => {
     return (
-        <h1>My shopping list</h1>
+        <div className="app-header d-flex">
+            <h1>My shopping list</h1>
+            <h2>{toBuy} more to buy, {done} done</h2>
+        </div>
     );
 };
 

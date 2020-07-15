@@ -1,9 +1,12 @@
 import React from 'react';
-import './App.css';
 
 import AppHeader from "./components/app-header";
 import SearchPanel from "./components/search-panel";
 import ShoppingList from "./components/shopping-list";
+import ItemStatusFilter from './components/item-status-filter';
+
+import "./App.css"
+
 
 
 const App = () => {
@@ -15,10 +18,14 @@ const App = () => {
     ];
 
     return (
-        <div>
-            <AppHeader />
-            <SearchPanel />
-            <ShoppingList data = {shoppingListData} />
+        <div className="shopping-list-app">
+            <AppHeader toBuy={1} done={1}/>
+            <div className="top-panel d-flex">
+                <SearchPanel/>
+                <ItemStatusFilter/>
+            </div>
+
+            <ShoppingList data={shoppingListData}/>
         </div>
     );
 }
