@@ -1,28 +1,29 @@
-import React from "react";
+import React, {Component} from "react";
 import ShoppingListItem from "./shopping-list-item";
 
 import "./shopping-list.css";
 
 
+class ShoppingList extends Component {
+    render() {
+        const {data} = this.props;
+        const elements = data.map((item) => {
+            return (
+                <li key = {item.id} className="list-group-item">
+                    <ShoppingListItem
+                        label={item.label}
+                        important={item.important}
+                    />
+                </li>
+            );
+        });
 
-const ShoppingList = ( {data} ) => {
-
-    const elements = data.map((item) => {
         return (
-            <li key = {item.id} className="list-group-item">
-                <ShoppingListItem
-                    label={item.label}
-                    important={item.important}
-                />
-            </li>
+            <ul className="list-group shopping-list">
+                {elements}
+            </ul>
         );
-    });
-
-    return (
-        <ul className="list-group shopping-list">
-            {elements}
-        </ul>
-    );
-};
+    }
+}
 
 export default ShoppingList;

@@ -1,23 +1,26 @@
-import React from "react";
+import React, {Component} from "react";
 
 import "./shopping-list-item.css"
 
 
+class ShoppingListItem extends Component {
 
-const ShoppingListItem = ( { label, important = false } ) => {
+    render() {
+        const { label, important = false } = this.props;
 
-    const shoppingListItemStyle = {
-        color: important ? "red" : "black",
-        fontWeight: important ? 'bold' : 'normal'
-    };
+        const shoppingListItemStyle = {
+            color: important ? "red" : "black",
+            fontWeight: important ? 'bold' : 'normal'
+        };
 
-    return (
-        <span className="shopping-list-item">
+
+        return (
+            <span className="shopping-list-item">
 
             <span
                 className="shopping-list-item-label"
                 style={shoppingListItemStyle}>
-                {label}
+            {label}
             </span>
 
             <button type="button"
@@ -30,8 +33,9 @@ const ShoppingListItem = ( { label, important = false } ) => {
                 <i className="fa fa-trash-o"/>
             </button>
 
-        </span>
-    );
-};
+            </span>
+        );
+    }
+}
 
 export default ShoppingListItem;
