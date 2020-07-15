@@ -13,14 +13,18 @@ class ShoppingListItem extends Component {
     }
 
     onLabelClick = () => {
-        this.setState({
-            done: true
+        this.setState((state) => {
+            return {
+                done: !state.done
+            };
         });
     };
 
     onButtonExclamationClick = () => {
-        this.setState({
-            important: true
+        this.setState((state) => {
+            return {
+                important: !state.important
+            };
         });
     };
 
