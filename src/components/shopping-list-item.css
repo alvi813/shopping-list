@@ -16,6 +16,7 @@
 
 .shopping-list-item.done .shopping-list-item-label {
     text-decoration: line-through;
+    text-decoration-style: double;
 }
 
 .shopping-list-item.important .shopping-list-item-label {
