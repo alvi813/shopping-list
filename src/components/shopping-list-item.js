@@ -15,7 +15,7 @@ const ShoppingListItem = ( { label, important = false } ) => {
         <span className="shopping-list-item">
 
             <span
-                className="todo-list-item-label"
+                className="shopping-list-item-label"
                 style={shoppingListItemStyle}>
                 {label}
             </span>
