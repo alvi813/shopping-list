@@ -16,11 +16,21 @@ class App extends Component {
 
     state = {
         shoppingListData: [
+            this.createShoppingListItem('new item'),
             {label: 'Pen', id: 1},
             {label: 'Notebook', important: true, id: 2},
             {label: 'Pencil', id: 3}
         ]
     };
+
+    createShoppingListItem(text) {
+        return {
+            text,
+            important: false,
+            done:false,
+            id: this.minId++
+        }
+    }
 
     deleteItem = (id) => {
         this.setState(({shoppingListData}) => {
@@ -39,11 +49,7 @@ class App extends Component {
     };
 
     addItem = (text) => {
-        const newItem = {
-            label: text,
-            important: false,
-            id: this.minId++
-        };
+        const newItem = this.createShoppingListItem(text);
 
         this.setState(({shoppingListData}) => {
             const newArr = [...shoppingListData, newItem];
@@ -52,11 +58,56 @@ class App extends Component {
         });
     };
 
+    switchProperty(arr, id, propName) {
+        const idDel = arr.findIndex((el) => el.id === id);
+
+        // update object
+        const oldItem = arr[idDel];
+        const newItem = {...oldItem, [propName]: !oldItem[propName]};
+
+        // construct new array
+        const newArray = [
+            ...arr.slice(0, idDel),
+            newItem,
+            ...arr.slice(idDel + 1)
+        ];
+
+        return {
+            arr: newArray
+        }
+    }
+
+    onSwitchDone = (id) => {
+        this.setState(({shoppingListData})=>{
+
+            return {
+                shoppingListData: this.switchProperty(shoppingListData, id, 'done')
+            };
+        });
+    };
+
+    onSwitchImportant = (id) => {
+        this.setState(({shoppingListData})=>{
+
+            return {
+                shoppingListData: this.switchProperty(shoppingListData, id, 'important')
+            };
+        });
+    };
+
+
+
     render() {
+
+        const doneCount = this.state.shoppingListData
+            .filter((el)=>el.done).length; // filter creates a new array so we don't change state here
+
+        const toBuyCount = this.state.shoppingListData.length - doneCount;
+
 
         return (
             <div className="shopping-list-app">
-                <AppHeader toBuy={1} done={1}/>
+                <AppHeader toBuy={toBuyCount} done={doneCount}/>
                 <div className="top-panel d-flex">
                     <SearchPanel/>
                     <ItemStatusFilter/>
@@ -64,7 +115,10 @@ class App extends Component {
 
                 <ShoppingList
                     data={this.state.shoppingListData}
-                    onItemDeleted={this.deleteItem}/>
+                    onItemDeleted={this.deleteItem}
+                    onSwitchDone={this.onSwitchDone}
+                    onSwitchImportant={this.onSwitchImportant}
+                />
 
                 <ItemAddForm onItemAdded={this.addItem}/>
             </div>
