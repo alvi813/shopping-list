@@ -4,12 +4,15 @@ import AppHeader from "./components/app-header";
 import SearchPanel from "./components/search-panel";
 import ShoppingList from "./components/shopping-list";
 import ItemStatusFilter from './components/item-status-filter';
+import ItemAddForm from "./components/item-add-form";
 
 import "./App.css"
 
 
 
 class App extends Component {
+
+    minId = 10;
 
     state = {
         shoppingListData: [
@@ -31,8 +34,22 @@ class App extends Component {
 
             return {
                 shoppingListData: newArray
-            }
-        })
+            };
+        });
+    };
+
+    addItem = (text) => {
+        const newItem = {
+            label: text,
+            important: false,
+            id: this.minId++
+        };
+
+        this.setState(({shoppingListData}) => {
+            const newArr = [...shoppingListData, newItem];
+
+            return {shoppingListData: newArr};
+        });
     };
 
     render() {
@@ -48,6 +65,8 @@ class App extends Component {
                 <ShoppingList
                     data={this.state.shoppingListData}
                     onItemDeleted={this.deleteItem}/>
+
+                <ItemAddForm onItemAdded={this.addItem}/>
             </div>
         );
     }
