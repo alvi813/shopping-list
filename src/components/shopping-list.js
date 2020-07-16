@@ -13,7 +13,7 @@ class ShoppingList extends Component {
                     <ShoppingListItem
                         label={item.label}
                         important={item.important}
-                        onDeleted = {() => onItemDeleted(item.id)}
+                        onItemDeleted = {() => onItemDeleted(item.id)}
                     />
                 </li>
             );
