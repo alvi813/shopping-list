@@ -6,14 +6,14 @@ import "./shopping-list.css";
 
 class ShoppingList extends Component {
     render() {
-        const {data, onDeleted} = this.props;
+        const {data, onItemDeleted} = this.props;
         const elements = data.map((item) => {
             return (
                 <li key = {item.id} className="list-group-item">
                     <ShoppingListItem
                         label={item.label}
                         important={item.important}
-                        onDeleted = {() => onDeleted(item.id)}
+                        onDeleted = {() => onItemDeleted(item.id)}
                     />
                 </li>
             );

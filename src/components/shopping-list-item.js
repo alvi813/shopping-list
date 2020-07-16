@@ -29,7 +29,7 @@ class ShoppingListItem extends Component {
     };
 
     render() {
-        const { label, onDeleted } = this.props;
+        const { label, onItemDeleted } = this.props;
 
         const { done } = this.state;
         const { important } = this.state;
@@ -62,7 +62,7 @@ class ShoppingListItem extends Component {
 
             <button type="button"
                     className="btn btn-outline-danger btn-sm float-right"
-                    onClick={onDeleted}
+                    onClick={onItemDeleted}
             >
                 <i className="fa fa-trash-o"/>
             </button>

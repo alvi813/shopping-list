@@ -47,7 +47,7 @@ class App extends Component {
 
                 <ShoppingList
                     data={this.state.shoppingListData}
-                    onDeleted={this.deleteItem()}/>
+                    onItemDeleted={this.deleteItem}/>
             </div>
         );
     }
