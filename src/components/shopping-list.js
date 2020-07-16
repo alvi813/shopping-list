@@ -6,7 +6,7 @@ import "./shopping-list.css";
 
 class ShoppingList extends Component {
     render() {
-        const {data, onItemDeleted} = this.props;
+        const {data, onItemDeleted, onSwitchDone, onSwitchImportant} = this.props;
         const elements = data.map((item) => {
             return (
                 <li key = {item.id} className="list-group-item">
@@ -14,6 +14,8 @@ class ShoppingList extends Component {
                         label={item.label}
                         important={item.important}
                         onItemDeleted = {() => onItemDeleted(item.id)}
+                        onSwitchDone = {() => onSwitchDone(item.id)}
+                        onSwitchImportant = {() => onSwitchImportant(item.id)}
                     />
                 </li>
             );

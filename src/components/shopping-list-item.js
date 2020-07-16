@@ -4,35 +4,17 @@ import "./shopping-list-item.css"
 
 
 class ShoppingListItem extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            done: false,
-            important: false
-        };
-    }
-
-    onLabelClick = () => {
-        this.setState((state) => {
-            return {
-                done: !state.done
-            };
-        });
-    };
-
-    onButtonExclamationClick = () => {
-        this.setState((state) => {
-            return {
-                important: !state.important
-            };
-        });
-    };
 
     render() {
-        const { label, onItemDeleted } = this.props;
+        const {
+            label,
+            onItemDeleted,
+            onSwitchDone,
+            onSwitchImportant,
+            done,
+            important
+        } = this.props;
 
-        const { done } = this.state;
-        const { important } = this.state;
 
         let classNames = "shopping-list-item";
         if (done) {
@@ -48,14 +30,14 @@ class ShoppingListItem extends Component {
 
             <span
                 className="shopping-list-item-label"
-                onClick = {this.onLabelClick}
+                onClick={onSwitchDone}
             >
             {label}
             </span>
 
             <button type="button"
                     className="btn btn-outline-success btn-sm float-right"
-                    onClick={this.onButtonExclamationClick}
+                    onClick={onSwitchImportant}
             >
                 <i className="fa fa-exclamation"/>
             </button>
