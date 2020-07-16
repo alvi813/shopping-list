@@ -9,7 +9,6 @@ import ItemAddForm from "./components/item-add-form";
 import "./App.css"
 
 
-
 class App extends Component {
 
     minId = 10;
@@ -18,16 +17,15 @@ class App extends Component {
         shoppingListData: [
             this.createShoppingListItem('new item'),
             {label: 'Pen', id: 1},
-            {label: 'Notebook', important: true, id: 2},
             {label: 'Pencil', id: 3}
         ]
     };
 
-    createShoppingListItem(text) {
+    createShoppingListItem(label) {
         return {
-            text,
+            label,
+            done: false,
             important: false,
-            done:false,
             id: this.minId++
         }
     }
@@ -36,7 +34,7 @@ class App extends Component {
         this.setState(({shoppingListData}) => {
             const idDel = shoppingListData.findIndex((el) => el.id === id);
 
-            const before = shoppingListData.slice(0,idDel);
+            const before = shoppingListData.slice(0, idDel);
             const after = shoppingListData.slice(idDel + 1);
 
             const newArray = [...before, ...after];
@@ -66,15 +64,11 @@ class App extends Component {
         const newItem = {...oldItem, [propName]: !oldItem[propName]};
 
         // construct new array
-        const newArray = [
+        return [
             ...arr.slice(0, idDel),
             newItem,
             ...arr.slice(idDel + 1)
         ];
-
-        return {
-            arr: newArray
-        }
     }
 
     onSwitchDone = (id) => {
@@ -99,8 +93,7 @@ class App extends Component {
 
     render() {
 
-        const doneCount = this.state.shoppingListData
-            .filter((el)=>el.done).length; // filter creates a new array so we don't change state here
+        const doneCount = this.state.shoppingListData.filter((el)=>el.done).length; // filter creates a new array so we don't change state here
 
         const toBuyCount = this.state.shoppingListData.length - doneCount;
 
