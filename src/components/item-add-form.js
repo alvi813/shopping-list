@@ -21,6 +21,9 @@ class ItemAddForm extends Component {
     onSubmit = (e) => {
         e.preventDefault();    // the page doesn't reload and the entered data doesn't disappear
         this.props.onItemAdded(this.state.label);
+        this.setState({
+            label: ''
+        });
     }
 
 
@@ -33,6 +36,7 @@ class ItemAddForm extends Component {
                     type = "text"
                     className = "form-control"
                     onChange = {this.onLabelChange}
+                    value = {this.state.label}
                     placeholder = "Enter your needs here"
                 />
 
