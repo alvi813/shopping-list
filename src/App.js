@@ -100,7 +100,7 @@ class App extends Component {
 
         return (
             <div className="shopping-list-app">
-                <AppHeader toBuy={toBuyCount} done={doneCount}/>
+                <AppHeader remains={toBuyCount} done={doneCount}/>
                 <div className="top-panel d-flex">
                     <SearchPanel/>
                     <ItemStatusFilter/>
