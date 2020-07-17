@@ -36,17 +36,17 @@ class ShoppingListItem extends Component {
             </span>
 
             <button type="button"
-                    className="btn btn-outline-success btn-sm float-right"
+                    className="btn btn-outline-danger btn-sm float-right button-important"
                     onClick={onSwitchImportant}
             >
-                <i className="fa fa-exclamation"/>
+                Important
             </button>
 
             <button type="button"
-                    className="btn btn-outline-danger btn-sm float-right"
+                    className="btn btn-outline-success btn-sm float-right button-delete"
                     onClick={onItemDeleted}
             >
-                <i className="fa fa-trash-o"/>
+                Delete
             </button>
 
             </span>
