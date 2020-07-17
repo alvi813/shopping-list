@@ -18,7 +18,8 @@ class App extends Component {
             this.createShoppingListItem('new item'),
             {label: 'Pen', id: 1},
             {label: 'Pencil', id: 3}
-        ]
+        ],
+        textToFind: ''
     };
 
     createShoppingListItem(label) {
@@ -89,10 +90,24 @@ class App extends Component {
         });
     };
 
+    onSearchChange = (textToFind) => {
+        this.setState({textToFind});
+    };
+
+    search (items, textToFind) {
+        if (textToFind.length === 0) {
+            return items;
+        }
+        return items.filter((item) => {
+            return item.label.toLowerCase().indexOf(textToFind.toLowerCase()) > -1   // toLowerCase() - to search regardless of case
+        });
+    };
+
 
 
     render() {
 
+        const visibleItems = this.search(this.state.shoppingListData, this.state.textToFind)
         const doneCount = this.state.shoppingListData.filter((el)=>el.done).length; // filter creates a new array so we don't change state here
 
         const toBuyCount = this.state.shoppingListData.length - doneCount;
@@ -102,12 +117,14 @@ class App extends Component {
             <div className="shopping-list-app">
                 <AppHeader toBuy={toBuyCount} done={doneCount}/>
                 <div className="top-panel d-flex">
-                    <SearchPanel/>
+                    <SearchPanel
+                        onSearchChange = {this.onSearchChange}
+                    />
                     <ItemStatusFilter/>
                 </div>
 
                 <ShoppingList
-                    data={this.state.shoppingListData}
+                    data={visibleItems}
                     onItemDeleted={this.deleteItem}
                     onSwitchDone={this.onSwitchDone}
                     onSwitchImportant={this.onSwitchImportant}
