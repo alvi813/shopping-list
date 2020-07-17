@@ -4,9 +4,12 @@
 
 .item-add-form input {
   margin-right: 3px;
+  background: floralwhite;
+  padding-left: 20px;
 }
 
 .btn-add {
   color: grey;
-  border: 1px solid lightgray;
+  border: 1px solid gray;
+  background: lightgray;
 }

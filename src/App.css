@@ -1,6 +1,8 @@
 .shopping-list-app {
-  margin: 2rem auto 0 auto;
+  margin: 0 auto 0 auto;
+  padding: 40px;
   max-width: 600px;
+  background-color: palegreen;
 }
 
 .top-panel {
