@@ -5,3 +5,8 @@
 .item-add-form input {
   margin-right: 3px;
 }
+
+.btn-add {
+  color: grey;
+  border: 1px solid lightgray;
+}
