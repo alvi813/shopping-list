@@ -14,11 +14,7 @@ class App extends Component {
     minId = 10;
 
     state = {
-        shoppingListData: [
-            this.createShoppingListItem('new item'),
-            {label: 'Pen', id: 1},
-            {label: 'Pencil', id: 3}
-        ],
+        shoppingListData: [],
         textToFind: '',
         filter: 'all'   // filter can be: (active, all, done)
     };
