@@ -12,8 +12,7 @@ class ItemAddForm extends Component {
 
     onLabelChange = (e) => {
         this.setState({
-            label: e.target.value,
-            value: ''
+            label: e.target.value
         });
 
 
