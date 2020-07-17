@@ -1,4 +1,8 @@
-.btn-all {
+.btn-active {
     background: palegreen;
-    border: 0.5px solid black;
+    color: black;
+}
+
+.btn-not-active {
+    background: lightgray;
 }

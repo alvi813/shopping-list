@@ -19,7 +19,8 @@ class App extends Component {
             {label: 'Pen', id: 1},
             {label: 'Pencil', id: 3}
         ],
-        textToFind: ''
+        textToFind: '',
+        filter: 'all'   // filter can be: (active, all, done)
     };
 
     createShoppingListItem(label) {
@@ -94,6 +95,10 @@ class App extends Component {
         this.setState({textToFind});
     };
 
+    onFilterChange = (filter) => {
+        this.setState({filter});
+    };
+
     search (items, textToFind) {
         if (textToFind.length === 0) {
             return items;
@@ -103,11 +108,24 @@ class App extends Component {
         });
     };
 
+    filter(items, filter) {
+        switch(filter) {
+            case 'all':
+                return items;
+            case 'active':
+                return items.filter((item) => !item.done);
+            case 'done':
+                return items.filter((item) => item.done);
+            default:
+                return items;
+        }
+    }
+
 
 
     render() {
 
-        const visibleItems = this.search(this.state.shoppingListData, this.state.textToFind)
+        const visibleItems = this.filter(this.search(this.state.shoppingListData, this.state.textToFind), this.state.filter);
         const doneCount = this.state.shoppingListData.filter((el)=>el.done).length; // filter creates a new array so we don't change state here
 
         const toBuyCount = this.state.shoppingListData.length - doneCount;
@@ -120,7 +138,10 @@ class App extends Component {
                     <SearchPanel
                         onSearchChange = {this.onSearchChange}
                     />
-                    <ItemStatusFilter/>
+                    <ItemStatusFilter
+                        filter={this.state.filter}
+                        onFilterChange={this.onFilterChange}
+                    />
                 </div>
 
                 <ShoppingList
